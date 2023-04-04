@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
 from random import randrange
-from os import join
+from os.path import join
 
 app = Flask(__name__)
 
