@@ -1,17 +1,16 @@
 from flask import Flask, jsonify
-import random
-import sqlite3
+from random import randrange
 
 app = Flask(__name__)
 
 @app.route('/')
 def random_text():
-    conn = sqlite3.connect("db/texts.db")
-    cursor = conn.cursor()
-    cursor.execute("SELECT text FROM texts ORDER BY RANDOM() LIMIT 1")
-    random_text = cursor.fetchone()[0]
-    conn.close()
-    return jsonify({"text": random_text})
+    with open("oblique.txt", "r") as ost:
+        strats = ost.readlines()
+        length = len(strats)
+    idx = randrange(190)
+    strat = strats[idx]
+    return jsonify({"text": strat.strip()})
 
 if __name__ == "__main__":
     app.run(debug=True)
