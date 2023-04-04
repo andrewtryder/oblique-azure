@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def random_text():
-    with open("oblique.txt", "r") as ost:
+    with open("../data/oblique.txt", "r") as ost:
         strats = ost.readlines()
         length = len(strats)
     idx = randrange(190)
