@@ -1,11 +1,12 @@
 from flask import Flask, jsonify
 from random import randrange
+from os import join
 
 app = Flask(__name__)
 
 @app.route('/')
 def random_text():
-    with open("../data/oblique.txt", "r") as ost:
+    with open(join('data', 'oblique.txt'), 'r') as ost:
         strats = ost.readlines()
         length = len(strats)
     idx = randrange(190)
