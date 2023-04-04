@@ -1,2 +1,2 @@
 Flask==2.2.2
-flask_unittest
+flask-unittest
