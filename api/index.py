@@ -4,7 +4,7 @@ import sqlite3
 
 app = Flask(__name__)
 
-@app.route("/api/random_text")
+@app.route('/')
 def random_text():
     conn = sqlite3.connect("db/texts.db")
     cursor = conn.cursor()
