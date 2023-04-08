@@ -1,8 +1,10 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 from random import randrange
 from os.path import join
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def random_text():
