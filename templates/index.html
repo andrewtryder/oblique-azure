@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random Image from Google Drive</title>
+    <style>
+        .quote {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 255, 255, 0.6);
+        padding: 10px;
+        font-size: 3vw; /* Set font-size relative to viewport width */
+        max-width: 80%; /* Limit width to 80% of container */
+        text-align: center; /* Center text horizontally */
+        line-height: 1.2; /* Set line-height to improve readability */
+        font-family: 'Open Sans', sans-serif; /* Set default font family */
+        color: {{ text_color }}; /* Set text color */
+        }
+      </style>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet"> <!-- Link to Google Fonts stylesheet -->
+  </head>
+  <body>
+    <img id="bg-image" src="data:image/jpeg;base64,{{ image_data }}" alt="Random image from Google Drive">
+    <div class="quote"></div>
+    <script>
+      fetch('/api')
+        .then(response => response.json())
+        .then(data => {
+          const fontFamilies = ['Open Sans', 'Montserrat', 'Lato', 'Roboto']; // List of font families to choose from
+          const randomFont = fontFamilies[Math.floor(Math.random() * fontFamilies.length)]; // Pick a random font family from the list
+          document.querySelector('.quote').innerHTML = data.text;
+          document.querySelector('.quote').style.fontFamily = `${randomFont}, sans-serif`; // Apply the randomly selected font to the quote text
+        })
+        .catch(error => console.error(error));
+    </script>
+  </body>
+</html>
