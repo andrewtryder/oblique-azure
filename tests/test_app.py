@@ -8,7 +8,7 @@ class TestApp(unittest.TestCase):
         self.app = app.test_client()
 
     def test_random_text(self):
-        response = self.app.get('/')
+        response = self.app.get('/api')
         self.assertEqual(response.status_code, 200)
         data = json.loads(response.get_data(as_text=True))
         self.assertIn("text", data)

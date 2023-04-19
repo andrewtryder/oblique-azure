@@ -4,7 +4,7 @@ import random
 from os.path import join
 import os
 from googleapiclient.discovery import build
-from utils import get_file_ids, get_file_content, resize_and_compress_image, get_contrasting_color
+from utils.utils import get_file_ids, get_file_content, resize_and_compress_image, get_contrasting_color
 from dotenv import load_dotenv
 
 env_path = os.path.join(os.path.dirname(__file__), '..', '.env')
