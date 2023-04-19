@@ -15,5 +15,20 @@ class TestApp(unittest.TestCase):
         self.assertIsInstance(data["text"], str)
         self.assertGreater(len(data["text"]), 0)
 
+    def test_index(self):
+        response = self.app.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'<html>', response.data)
+        self.assertIn(b'</html>', response.data)
+    
+    def test_empty_folder(self):
+        # Set an empty folder ID.
+        app.config['TESTING'] = True
+        app.config['GOOGLE_DRIVE_FOLDER_ID'] = 'INVALID_FOLDER_ID'
+
+        response = self.app.get('/')
+        self.assertEqual(response.status_code, 200)
+
+
 if __name__ == '__main__':
     unittest.main()
